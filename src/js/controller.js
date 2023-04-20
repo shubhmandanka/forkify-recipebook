@@ -10,13 +10,6 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime'
 import { MODAL_CLOSE_SEC } from './config.js';
 
-// if(module.hot){
-//   module.hot.accept();
-// }
-
-
-// https://forkify-api.herokuapp.com/v2
-
 ///////////////////////////////////////////////////
 
 
@@ -58,7 +51,6 @@ const controlSearchResults = async function ( ){
     await model.loadSearchResult(query);
     
     //render result
-    // resultsView.render(model.state.search.results)
     resultsView.render(model.getSearchResultPage())
 
     //render pagination
@@ -71,7 +63,6 @@ const controlSearchResults = async function ( ){
 
 const controlPagination = function (goToPage){
    //render new resulkt
-    // resultsView.render(model.state.search.results)
     resultsView.render(model.getSearchResultPage(goToPage))
 
     //render new pagination
@@ -85,7 +76,6 @@ const controlServings = function(newServings){
   model.updateServings(newServings)
 
   //update recipe view
-  // recipeView.render(model.state.recipe);
   recipeView.update(model.state.recipe);
 
 }
@@ -123,7 +113,6 @@ const controlAddRecipe = async function(newRecipe){
 
     //change id in url
     window.history.pushState(null, '', `#${model.state.recipe.id}`);
-    // window.history.pushState(null, '', `#${model.state.recipe.id}`);
 
     setTimeout(function(){
       addRecipeView.toggleWindow()
@@ -149,6 +138,5 @@ const init = function(){
   paginationView.addHandlerClick(controlPagination);
 
   addRecipeView.addHandlerUpload(controlAddRecipe);
-  console.log('hiii')
 }
 init()
